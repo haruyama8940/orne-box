@@ -59,7 +59,7 @@ class Icart_mini_driver : public rclcpp::Node
         void cmd_vel_cb(const geometry_msgs::msg::Twist::SharedPtr msg)
         {
           cmd_vel_ =  msg;
-          Spur_vel(-(msg->linear.x),msg->angular.z);
+          Spur_vel(msg->linear.x,msg->angular.z);
         }
         
 };
@@ -113,7 +113,8 @@ class Icart_mini_driver : public rclcpp::Node
         js.position.resize(2);
         js.velocity.resize(2);
     }
-    //this function is set ypspur_param and bringup ypspur_coordinator
+
+    //this function is set ypspur_param
     void Icart_mini_driver::bringup_ypspur()
     {
         if(Spur_init()>0)
@@ -182,7 +183,7 @@ class Icart_mini_driver : public rclcpp::Node
         odom.header.stamp = current_stamp;
         odom.header.frame_id = odom_frame_id;
         odom.child_frame_id = base_frame_id;
-        odom.pose.pose.position.x = -x;
+        odom.pose.pose.position.x = x;
         odom.pose.pose.position.y = -y;
         odom.pose.pose.position.z = 0;
         odom.pose.pose.orientation = tf2::toMsg(tf2::Quaternion(z_axis_, yaw));
@@ -195,7 +196,7 @@ class Icart_mini_driver : public rclcpp::Node
         odom_trans.header.stamp = current_stamp + rclcpp::Duration::from_seconds(tf_time_offset_);
         odom_trans.header.frame_id = odom_frame_id;
         odom_trans.child_frame_id = base_frame_id;
-        odom_trans.transform.translation.x = -x;
+        odom_trans.transform.translation.x = x;
         odom_trans.transform.translation.y = -y;
         odom_trans.transform.translation.z = 0;
         odom_trans.transform.rotation = odom.pose.pose.orientation;
@@ -233,12 +234,7 @@ int main(int argc, char * argv[])
   icart->read_param();
   icart->reset_param();
   icart->bringup_ypspur();
-    
-  // while (rclcpp::ok())
-  // {
-  //   icart->loop();
-  //   rclcpp::spin_some(icart);
-  // }
+
   rclcpp::spin(icart);
   return 0;
 }
