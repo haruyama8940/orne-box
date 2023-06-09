@@ -40,10 +40,10 @@ def generate_launch_description():
         ),
 
         #----------- robot_state_publisher and joint_state_publisher --------------
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                [launch_include_file_dir, '/description.launch.py'])
-        ),
+        # IncludeLaunchDescription(
+        #     PythonLaunchDescriptionSource(
+        #         [launch_include_file_dir, '/description.launch.py'])
+        # ),
 
         #---------- rfans brige and  convert -------------
         Node(
