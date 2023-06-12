@@ -68,7 +68,7 @@ class Icart_mini_driver : public rclcpp::Node
     { 
       declare_parameter("odom_frame_id","odom");
       declare_parameter("base_frame_id","base_footprint");
-      declare_parameter("Hz",10);
+      declare_parameter("Hz",40);
       declare_parameter("left_wheel_joint","left_wheel_joint");
       declare_parameter("right_wheel_joint","right_wheel_joint");
       declare_parameter("liner_vel_lim",1.5);
@@ -184,7 +184,7 @@ class Icart_mini_driver : public rclcpp::Node
         odom.header.frame_id = odom_frame_id;
         odom.child_frame_id = base_frame_id;
         odom.pose.pose.position.x = x;
-        odom.pose.pose.position.y = -y;
+        odom.pose.pose.position.y = y;
         odom.pose.pose.position.z = 0;
         odom.pose.pose.orientation = tf2::toMsg(tf2::Quaternion(z_axis_, yaw));
         odom.twist.twist.linear.x = v;
@@ -197,7 +197,7 @@ class Icart_mini_driver : public rclcpp::Node
         odom_trans.header.frame_id = odom_frame_id;
         odom_trans.child_frame_id = base_frame_id;
         odom_trans.transform.translation.x = x;
-        odom_trans.transform.translation.y = -y;
+        odom_trans.transform.translation.y = y;
         odom_trans.transform.translation.z = 0;
         odom_trans.transform.rotation = odom.pose.pose.orientation;
         tf_broadcaster_->sendTransform(odom_trans);
