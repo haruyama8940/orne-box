@@ -195,8 +195,8 @@
     </gazebo>
 
     <!-- mirror_lidar -->
-    <gazebo reference="mirror_lidar_link">
-      <sensor type="ray" name="mirror_lidar_sensor">
+    <gazebo reference="lidar_with_mirror_center_link">
+      <sensor type="ray" name="lidar_with_mirror_center_sensor">
         <pose>0 0 0 0 0 0</pose>
         <visualize>$(arg laser_visual)</visualize>
         <update_rate>10</update_rate>
@@ -220,19 +220,15 @@
           </range>
           <noise>
             <type>gaussian</type>
-            <!-- Noise parameters based on published spec for Hokuyo laser
-                 achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-                 stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-                 reading. -->
             <mean>0.0</mean>
             <stddev>0.01</stddev>
           </noise>
         </ray>
-        <plugin name="gazebo_ros_mirror_lidar_controller" filename="libgazebo_ros_ray_sensor.so">
+        <plugin name="gazebo_ros_lidar_with_mirror_center_controller" filename="libgazebo_ros_ray_sensor.so">
           <ros>
-            <remapping>~/out:=mirror_scan</remapping>
+            <remapping>~/out:=lidar_with_mirror_center_scan</remapping>
           </ros>
-          <frame_name>mirror_lidar_link</frame_name>
+          <frame_name>lidar_with_mirror_center_link</frame_name>
           <output_type>sensor_msgs/LaserScan</output_type>
         </plugin>
       </sensor>
@@ -240,8 +236,8 @@
     </gazebo>
 
     <!-- mirror_lidar -->
-    <gazebo reference="mirror_lidar_left_link">
-      <sensor type="ray" name="mirror_lidar_left_sensor">
+    <gazebo reference="lidar_with_mirror_left_link">
+      <sensor type="ray" name="lidar_with_mirror_left_sensor">
         <pose>0 0 0 0 0 0</pose>
         <visualize>$(arg laser_visual)</visualize>
         <update_rate>10</update_rate>
@@ -265,19 +261,15 @@
           </range>
           <noise>
             <type>gaussian</type>
-            <!-- Noise parameters based on published spec for Hokuyo laser
-                 achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-                 stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-                 reading. -->
             <mean>0.0</mean>
             <stddev>0.01</stddev>
           </noise>
         </ray>
-        <plugin name="gazebo_ros_mirror_lidar_left_controller" filename="libgazebo_ros_ray_sensor.so">
+        <plugin name="gazebo_ros_lidar_with_mirror_left_controller" filename="libgazebo_ros_ray_sensor.so">
           <ros>
-            <remapping>~/out:=mirror_left_scan</remapping>
+            <remapping>~/out:=lidar_with_mirror_left_scan</remapping>
           </ros>
-          <frame_name>mirror_lidar_left_link</frame_name>
+          <frame_name>lidar_with_mirror_left_link</frame_name>
           <output_type>sensor_msgs/LaserScan</output_type>
         </plugin>
       </sensor>
@@ -285,8 +277,8 @@
     </gazebo>
 
     <!-- mirror_lidar -->
-    <gazebo reference="mirror_lidar_right_link">
-      <sensor type="ray" name="mirror_lidar_right_sensor">
+    <gazebo reference="lidar_with_mirror_right_link">
+      <sensor type="ray" name="lidar_with_mirror_right_sensor">
         <pose>0 0 0 0 0 0</pose>
         <visualize>$(arg laser_visual)</visualize>
         <update_rate>10</update_rate>
@@ -310,19 +302,15 @@
           </range>
           <noise>
             <type>gaussian</type>
-            <!-- Noise parameters based on published spec for Hokuyo laser
-                 achieving "+-30mm" accuracy at range < 10m.  A mean of 0.0m and
-                 stddev of 0.01m will put 99.7% of samples within 0.03m of the true
-                 reading. -->
             <mean>0.0</mean>
             <stddev>0.01</stddev>
           </noise>
         </ray>
-        <plugin name="gazebo_ros_mirror_right_lidar_controller" filename="libgazebo_ros_ray_sensor.so">
+        <plugin name="gazebo_ros_lidar_with_mirror_right_controller" filename="libgazebo_ros_ray_sensor.so">
           <ros>
-            <remapping>~/out:=mirror_right_scan</remapping>
+            <remapping>~/out:=lidar_with_mirror_right_scan</remapping>
           </ros>
-          <frame_name>mirror_lidar_right_link</frame_name>
+          <frame_name>lidar_with_mirror_right_link</frame_name>
           <output_type>sensor_msgs/LaserScan</output_type>
         </plugin>
       </sensor>
