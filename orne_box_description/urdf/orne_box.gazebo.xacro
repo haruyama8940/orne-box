@@ -205,8 +205,8 @@
             <horizontal>
               <samples>341</samples>
               <resolution>1</resolution>
-              <min_angle>${-PI/180*60}</min_angle>
-              <max_angle>${ PI/180*60}</max_angle>
+              <min_angle>${-PI/180*90}</min_angle>
+              <max_angle>${ PI/180*90}</max_angle>
             </horizontal>
             <vertical>
               <samples>1</samples>
@@ -247,7 +247,7 @@
               <samples>341</samples>
               <resolution>1</resolution>
               <min_angle>${PI/180*90}</min_angle>
-              <max_angle>${PI/180*140}</max_angle>
+              <max_angle>${PI/180*120}</max_angle>
             </horizontal>
             <vertical>
               <samples>1</samples>
@@ -287,7 +287,7 @@
             <horizontal>
               <samples>341</samples>
               <resolution>1</resolution>
-              <min_angle>${-PI/180*140}</min_angle>
+              <min_angle>${-PI/180*120}</min_angle>
               <max_angle>${-PI/180*90}</max_angle>
             </horizontal>
             <vertical>
