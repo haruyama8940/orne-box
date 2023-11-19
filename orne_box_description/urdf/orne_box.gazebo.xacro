@@ -194,7 +194,7 @@
       <material>Gazebo/Black</material>
     </gazebo>
 
-    <!-- mirror_lidar -->
+    <!-- lidar_with_mirror -->
     <gazebo reference="lidar_with_mirror_center_link">
       <sensor type="ray" name="lidar_with_mirror_center_sensor">
         <pose>0 0 0 0 0 0</pose>
@@ -203,7 +203,7 @@
         <ray>
           <scan>
             <horizontal>
-              <samples>341</samples>
+              <samples>512</samples>
               <resolution>1</resolution>
               <min_angle>${-PI/180*90}</min_angle>
               <max_angle>${ PI/180*90}</max_angle>
@@ -244,7 +244,7 @@
         <ray>
           <scan>
             <horizontal>
-              <samples>341</samples>
+              <samples>85</samples>
               <resolution>1</resolution>
               <min_angle>${PI/180*90}</min_angle>
               <max_angle>${PI/180*120}</max_angle>
@@ -285,7 +285,7 @@
         <ray>
           <scan>
             <horizontal>
-              <samples>341</samples>
+              <samples>85</samples>
               <resolution>1</resolution>
               <min_angle>${-PI/180*120}</min_angle>
               <max_angle>${-PI/180*90}</max_angle>
