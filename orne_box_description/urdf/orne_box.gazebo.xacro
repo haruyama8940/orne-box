@@ -193,4 +193,127 @@
       </sensor>
       <material>Gazebo/Black</material>
     </gazebo>
+
+    <!-- lidar_with_mirror -->
+    <gazebo reference="lidar_with_mirror_center_link">
+      <sensor type="ray" name="lidar_with_mirror_center_sensor">
+        <pose>0 0 0 0 0 0</pose>
+        <visualize>$(arg laser_visual)</visualize>
+        <update_rate>10</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>512</samples>
+              <resolution>1</resolution>
+              <min_angle>${-PI/180*90}</min_angle>
+              <max_angle>${ PI/180*90}</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>1</samples>
+              <resolution>1</resolution>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.10</min>
+            <max>5.6</max>
+            <resolution>0.001</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="gazebo_ros_lidar_with_mirror_center_controller" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <remapping>~/out:=lidar_with_mirror_center_scan</remapping>
+          </ros>
+          <frame_name>lidar_with_mirror_center_link</frame_name>
+          <output_type>sensor_msgs/LaserScan</output_type>
+        </plugin>
+      </sensor>
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- mirror_lidar -->
+    <gazebo reference="lidar_with_mirror_left_link">
+      <sensor type="ray" name="lidar_with_mirror_left_sensor">
+        <pose>0 0 0 0 0 0</pose>
+        <visualize>$(arg laser_visual)</visualize>
+        <update_rate>10</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>85</samples>
+              <resolution>1</resolution>
+              <min_angle>${PI/180*90}</min_angle>
+              <max_angle>${PI/180*120}</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>1</samples>
+              <resolution>1</resolution>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.10</min>
+            <max>5.6</max>
+            <resolution>0.001</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="gazebo_ros_lidar_with_mirror_left_controller" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <remapping>~/out:=lidar_with_mirror_left_scan</remapping>
+          </ros>
+          <frame_name>lidar_with_mirror_left_link</frame_name>
+          <output_type>sensor_msgs/LaserScan</output_type>
+        </plugin>
+      </sensor>
+      <material>Gazebo/Black</material>
+    </gazebo>
+
+    <!-- mirror_lidar -->
+    <gazebo reference="lidar_with_mirror_right_link">
+      <sensor type="ray" name="lidar_with_mirror_right_sensor">
+        <pose>0 0 0 0 0 0</pose>
+        <visualize>$(arg laser_visual)</visualize>
+        <update_rate>10</update_rate>
+        <ray>
+          <scan>
+            <horizontal>
+              <samples>85</samples>
+              <resolution>1</resolution>
+              <min_angle>${-PI/180*120}</min_angle>
+              <max_angle>${-PI/180*90}</max_angle>
+            </horizontal>
+            <vertical>
+              <samples>1</samples>
+              <resolution>1</resolution>
+            </vertical>
+          </scan>
+          <range>
+            <min>0.10</min>
+            <max>5.6</max>
+            <resolution>0.001</resolution>
+          </range>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+          </noise>
+        </ray>
+        <plugin name="gazebo_ros_lidar_with_mirror_right_controller" filename="libgazebo_ros_ray_sensor.so">
+          <ros>
+            <remapping>~/out:=lidar_with_mirror_right_scan</remapping>
+          </ros>
+          <frame_name>lidar_with_mirror_right_link</frame_name>
+          <output_type>sensor_msgs/LaserScan</output_type>
+        </plugin>
+      </sensor>
+      <material>Gazebo/Black</material>
+    </gazebo>
 </robot>
